@@ -551,7 +551,7 @@ document.addEventListener('DOMContentLoaded', () => {
         e.preventDefault();
         const workId = card.dataset.workId;
         if (workId) {
-          window.location.href = '/works/' + workId;
+          openWorkDetail(workId);
         }
       });
     });
