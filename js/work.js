@@ -1,5 +1,5 @@
 /* ==========================================
-   タテドウガ - Individual Work Detail Page
+   JobReel（採用特化） - Individual Work Detail Page
    ========================================== */
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -58,15 +58,15 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // ============ DATA ============
-  const KEYS = { works: 'td_works', categories: 'td_categories' };
+  const KEYS = { works: 'jr_works', categories: 'jr_categories' };
 
   function getData(key) {
-    return DB.get(key.replace('td_', ''));
+    return DB.get(key.replace('jr_', ''));
   }
 
   const DEFAULT_CATEGORIES = {
-    corporate: '企業VP', product: '商品紹介', recruit: '採用動画',
-    sns: 'SNS広告', anime: 'アニメーション',
+    brand: 'ブランドムービー', drama: '採用ドラマ・アニメ',
+    'job-desc': '職種説明アニメ', 'sns-short': 'SNSショートドラマ',
   };
 
   function getCategoryMap() {
@@ -80,12 +80,12 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   const STATIC_WORKS = {
-    'static-1': { id: 'static-1', title: '大手IT企業 会社紹介映像', category: 'corporate', videoId: 'oG0mrNqGZCw', duration: '0:19', description: '' },
-    'static-2': { id: 'static-2', title: '化粧品ブランド 新商品プロモーション', category: 'product', videoId: 'oG0mrNqGZCw', duration: '1:30', description: '' },
-    'static-3': { id: 'static-3', title: '大手メーカー 新卒採用リクルート映像', category: 'recruit', videoId: 'oG0mrNqGZCw', duration: '5:12', description: '' },
-    'static-4': { id: 'static-4', title: 'アパレルブランド Instagram Reels広告', category: 'sns', videoId: 'oG0mrNqGZCw', duration: '0:30', description: '' },
-    'static-5': { id: 'static-5', title: 'SaaS企業 サービス紹介モーショングラフィックス', category: 'anime', videoId: 'oG0mrNqGZCw', duration: '2:00', description: '' },
-    'static-6': { id: 'static-6', title: '不動産デベロッパー ブランドムービー', category: 'corporate', videoId: 'oG0mrNqGZCw', duration: '4:15', description: '' },
+    'static-1': { id: 'static-1', title: 'IT企業 採用ブランドムービー', category: 'brand', videoId: 'oG0mrNqGZCw', duration: '3:24', description: '' },
+    'static-2': { id: 'static-2', title: '建設会社 採用ドラマ動画', category: 'drama', videoId: 'oG0mrNqGZCw', duration: '5:12', description: '' },
+    'static-3': { id: 'static-3', title: '介護施設 職種説明アニメ動画', category: 'job-desc', videoId: 'oG0mrNqGZCw', duration: '2:00', description: '' },
+    'static-4': { id: 'static-4', title: 'アパレル企業 SNSショートドラマ', category: 'sns-short', videoId: 'oG0mrNqGZCw', duration: '0:30', description: '' },
+    'static-5': { id: 'static-5', title: 'メーカー 社員インタビュー動画', category: 'brand', videoId: 'oG0mrNqGZCw', duration: '4:15', description: '' },
+    'static-6': { id: 'static-6', title: 'スタートアップ 採用コンセプトムービー', category: 'brand', videoId: 'oG0mrNqGZCw', duration: '1:30', description: '' },
   };
 
   function findWork(id) {
@@ -128,10 +128,10 @@ document.addEventListener('DOMContentLoaded', () => {
     const wCats = Array.isArray(work.categories) ? work.categories : (work.category ? [work.category] : []);
 
     // SEO: update title and meta tags
-    const titleText = work.title + ' | 株式会社タテドウガ';
-    const descText = work.description ? work.description.slice(0, 120) : ('AI動画制作実績：' + work.title);
+    const titleText = work.title + ' | JobReel';
+    const descText = work.description ? work.description.slice(0, 120) : ('採用動画制作実績：' + work.title);
     const thumbUrl = work.thumbnail || 'https://img.youtube.com/vi/' + vid + '/maxresdefault.jpg';
-    const pageUrl = 'https://www.tatedouga.jp/works/' + work.id;
+    const pageUrl = window.location.origin + '/works/' + work.id;
 
     document.title = titleText;
     const setMeta = (sel, val) => { const el = document.querySelector(sel); if (el) el.setAttribute('content', val); };

@@ -1,6 +1,6 @@
 /* ==========================================
-   株式会社タテドウガ - Main JavaScript
-   管理画面(localStorage)との連動対応
+   JobReel（採用特化） - Main JavaScript
+   管理画面(Firestore)との連動対応
    ========================================== */
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -23,19 +23,19 @@ document.addEventListener('DOMContentLoaded', () => {
   processShortVideos();
 
   // ============ DATA LAYER (Firestore via DB) ============
-  const KEYS = { works: 'td_works', news: 'td_news', inquiries: 'td_inquiries', settings: 'td_settings', categories: 'td_categories' };
+  const KEYS = { works: 'jr_works', news: 'jr_news', inquiries: 'jr_inquiries', settings: 'jr_settings', categories: 'jr_categories' };
 
   function getData(key) {
     if (key === KEYS.settings) return DB.getSettings();
-    return DB.get(key.replace('td_', ''));
+    return DB.get(key.replace('jr_', ''));
   }
   function getSettings() {
     return DB.getSettings();
   }
 
   const DEFAULT_CATEGORIES = {
-    corporate: '企業VP', product: '商品紹介', recruit: '採用動画',
-    sns: 'SNS広告', anime: 'アニメーション',
+    brand: 'ブランドムービー', drama: '採用ドラマ・アニメ',
+    'job-desc': '職種説明アニメ', 'sns-short': 'SNSショートドラマ',
   };
   function getCategoryMap() {
     const stored = getData(KEYS.categories);
@@ -319,12 +319,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Static card fallback data (for HTML-only cards before localStorage loads)
   const STATIC_WORKS = {
-    'static-1': { id: 'static-1', title: '大手IT企業 会社紹介映像', category: 'corporate', client: '株式会社○○テクノロジー', videoId: 'oG0mrNqGZCw', duration: '0:19', description: '' },
-    'static-2': { id: 'static-2', title: '化粧品ブランド 新商品プロモーション', category: 'product', client: '○○コスメティック株式会社', videoId: 'oG0mrNqGZCw', duration: '1:30', description: '' },
-    'static-3': { id: 'static-3', title: '大手メーカー 新卒採用リクルート映像', category: 'recruit', client: '○○製造株式会社', videoId: 'oG0mrNqGZCw', duration: '5:12', description: '' },
-    'static-4': { id: 'static-4', title: 'アパレルブランド Instagram Reels広告', category: 'sns', client: '○○ファッション株式会社', videoId: 'oG0mrNqGZCw', duration: '0:30', description: '' },
-    'static-5': { id: 'static-5', title: 'SaaS企業 サービス紹介モーショングラフィックス', category: 'anime', client: '株式会社○○クラウド', videoId: 'oG0mrNqGZCw', duration: '2:00', description: '' },
-    'static-6': { id: 'static-6', title: '不動産デベロッパー ブランドムービー', category: 'corporate', client: '○○不動産株式会社', videoId: 'oG0mrNqGZCw', duration: '4:15', description: '' },
+    'static-1': { id: 'static-1', title: 'IT企業 採用ブランドムービー', category: 'brand', client: '株式会社○○テクノロジー', videoId: 'oG0mrNqGZCw', duration: '3:24', description: '' },
+    'static-2': { id: 'static-2', title: '建設会社 採用ドラマ動画', category: 'drama', client: '○○建設株式会社', videoId: 'oG0mrNqGZCw', duration: '5:12', description: '' },
+    'static-3': { id: 'static-3', title: '介護施設 職種説明アニメ動画', category: 'job-desc', client: '○○介護サービス株式会社', videoId: 'oG0mrNqGZCw', duration: '2:00', description: '' },
+    'static-4': { id: 'static-4', title: 'アパレル企業 SNSショートドラマ', category: 'sns-short', client: '○○ファッション株式会社', videoId: 'oG0mrNqGZCw', duration: '0:30', description: '' },
+    'static-5': { id: 'static-5', title: 'メーカー 社員インタビュー動画', category: 'brand', client: '○○製造株式会社', videoId: 'oG0mrNqGZCw', duration: '4:15', description: '' },
+    'static-6': { id: 'static-6', title: 'スタートアップ 採用コンセプトムービー', category: 'brand', client: '株式会社○○テック', videoId: 'oG0mrNqGZCw', duration: '1:30', description: '' },
   };
 
   function getAllWorks() {

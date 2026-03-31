@@ -1,16 +1,16 @@
 /* ==========================================
-   タテドウガ - Admin Panel JavaScript
+   JobReel（採用特化） - Admin Panel JavaScript
    ========================================== */
 
 document.addEventListener('DOMContentLoaded', () => {
 
   // ============ DATA LAYER (Firestore via DB) ============
   const KEYS = {
-    works: 'td_works',
-    news: 'td_news',
-    inquiries: 'td_inquiries',
-    settings: 'td_settings',
-    categories: 'td_categories',
+    works: 'jr_works',
+    news: 'jr_news',
+    inquiries: 'jr_inquiries',
+    settings: 'jr_settings',
+    categories: 'jr_categories',
   };
 
   // YouTube URL / iframe埋め込みコード → 動画ID抽出
@@ -39,11 +39,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
   function getData(key) {
     if (key === KEYS.settings) return DB.getSettings();
-    return DB.get(key.replace('td_', ''));
+    return DB.get(key.replace('jr_', ''));
   }
   function setData(key, data) {
     if (key === KEYS.settings) DB.setSettings(data);
-    else DB.set(key.replace('td_', ''), data);
+    else DB.set(key.replace('jr_', ''), data);
   }
   function getSettings() {
     return DB.getSettings();
@@ -53,30 +53,29 @@ document.addEventListener('DOMContentLoaded', () => {
   function initSampleData() {
     if (getData(KEYS.works).length === 0) {
       setData(KEYS.works, [
-        { id: 1, title: '大手IT企業 会社紹介映像', category: 'corporate', client: '株式会社○○テクノロジー', videoId: 'oG0mrNqGZCw', duration: '3:24', description: 'AI生成映像と実写を組み合わせた、次世代のコーポレートムービー。最先端のAI技術を活用し、企業の魅力を余すことなく伝える映像に仕上げました。', points: '・AI生成映像と実写素材を自然に融合させるカラーグレーディング\n・企業理念を視覚的に表現するモーションデザイン\n・視聴者の離脱を防ぐテンポの良い構成設計' },
-        { id: 2, title: '化粧品ブランド 新商品プロモーション', category: 'product', client: '○○コスメティック株式会社', videoId: 'oG0mrNqGZCw', duration: '1:30', description: 'AIによるビジュアル生成で、商品の世界観を美しく表現。短尺でもインパクトのあるプロモーション映像を実現しました。', points: '・AI生成による幻想的なビジュアル表現で商品の世界観を演出\n・短尺でも記憶に残るインパクトのある構成\n・各プラットフォーム最適化した複数バージョンの制作' },
-        { id: 3, title: '大手メーカー 新卒採用リクルート映像', category: 'recruit', client: '○○製造株式会社', videoId: 'oG0mrNqGZCw', duration: '5:12', description: '働く社員の姿をAI生成映像で再現し、リアルな職場の雰囲気を伝えるリクルート映像。採用応募数の大幅増加に貢献しました。', points: '・AI生成映像で社員の日常業務風景をリアルに再現\n・若年層の心に響くBGMとテンポ感の設計\n・採用KPIを意識したCTA導線の組み込み' },
-        { id: 4, title: 'アパレルブランド Instagram Reels広告', category: 'sns', client: '○○ファッション株式会社', videoId: 'oG0mrNqGZCw', duration: '0:30', description: 'AIで大量のクリエイティブバリエーションを生成し、ABテストを実施。CVR最大化を実現したSNS広告動画です。', points: '・AIによる大量クリエイティブバリエーション生成\n・ABテストに基づくデータドリブンな最適化\n・Reelsのアルゴリズムに最適化した冒頭3秒の設計' },
-        { id: 5, title: 'SaaS企業 サービス紹介モーショングラフィックス', category: 'anime', client: '株式会社○○クラウド', videoId: 'oG0mrNqGZCw', duration: '2:00', description: 'AIモーショングラフィックスで複雑なサービス内容をわかりやすく可視化。サービスの価値を直感的に伝える映像に仕上げました。', points: '・AIモーショングラフィックスで複雑な機能を直感的に可視化\n・ユーザー目線のストーリーテリングで導入メリットを訴求\n・ブランドカラーとトーンを統一したデザインシステム' },
-        { id: 6, title: '不動産デベロッパー ブランドムービー', category: 'corporate', client: '○○不動産株式会社', videoId: 'oG0mrNqGZCw', duration: '4:15', description: 'AI生成による壮大な建築ビジュアルと実写を組み合わせ、ブランドの世界観を表現。撮影ロケなしでもリッチな映像を実現しました。', points: '・AI生成による壮大な建築ビジュアルの制作\n・実写不要でコストを抑えつつリッチな映像を実現\n・ブランドの世界観を音楽と映像で統一的に演出' },
+        { id: 1, title: 'IT企業 採用ブランドムービー', category: 'brand', client: '株式会社○○テクノロジー', videoId: 'oG0mrNqGZCw', duration: '3:24', description: '企業の採用ブランドを映像で表現。社風・ビジョン・働く環境をダイナミックに伝え、求職者の志望度を高めるブランドムービーを制作しました。', points: '・企業理念と社風を映像で直感的に伝える演出\n・若手社員の声を効果的に取り入れた構成\n・採用LPへの導線を意識したCTA設計' },
+        { id: 2, title: '建設会社 採用ドラマ動画', category: 'drama', client: '○○建設株式会社', videoId: 'oG0mrNqGZCw', duration: '5:12', description: '新入社員の成長ストーリーをドラマ仕立てで描く採用動画。リアルな現場の雰囲気と働くやりがいを伝え、応募数の大幅増加に貢献しました。', points: '・実際の社員をモデルにしたリアルなストーリー\n・現場の臨場感を伝えるアニメーション表現\n・共感を生むキャラクター設計' },
+        { id: 3, title: '介護施設 職種説明アニメ動画', category: 'job-desc', client: '○○介護サービス株式会社', videoId: 'oG0mrNqGZCw', duration: '2:00', description: '介護職の1日の流れ・やりがい・キャリアパスをアニメ×図解でわかりやすく映像化。応募者の職種理解を深め、ミスマッチを防ぎます。', points: '・業務内容を図解アニメーションでわかりやすく可視化\n・1日のスケジュールをタイムライン形式で紹介\n・キャリアパスの見える化で長期就労意欲を促進' },
+        { id: 4, title: 'アパレル企業 SNSショートドラマ', category: 'sns-short', client: '○○ファッション株式会社', videoId: 'oG0mrNqGZCw', duration: '0:30', description: 'TikTok・Instagram Reels向けの縦型ショートドラマ。Z世代に刺さるストーリーで採用認知を拡大し、求人広告費をかけずに応募増加を実現しました。', points: '・Z世代の視聴習慣に最適化した縦型フォーマット\n・最後まで見てしまうストーリー構成\n・拡散・シェアを狙ったフック設計' },
+        { id: 5, title: 'メーカー 社員インタビュー動画', category: 'brand', client: '○○製造株式会社', videoId: 'oG0mrNqGZCw', duration: '4:15', description: '現場で働く社員のリアルな声を映像で届ける採用インタビュー動画。入社後のイメージを具体化し、採用のミスマッチを防ぎます。', points: '・社員の自然な表情を引き出すインタビュー技法\n・職場環境のリアルな雰囲気を伝える映像構成\n・複数職種のインタビューで幅広い求職者にアプローチ' },
+        { id: 6, title: 'スタートアップ 採用コンセプトムービー', category: 'brand', client: '株式会社○○テック', videoId: 'oG0mrNqGZCw', duration: '1:30', description: 'スタートアップのビジョンと熱量を映像で表現。少人数でも大きなインパクトを与える採用コンセプトムービーを制作しました。', points: '・企業のミッション・ビジョンを映像で体感できる演出\n・少人数チームの一体感と成長機会を訴求\n・SNS展開も想定したマルチフォーマット対応' },
       ]);
     }
     if (getData(KEYS.news).length === 0) {
       setData(KEYS.news, [
-        { id: 1, date: '2026-02-15', tag: 'お知らせ', title: 'コーポレートサイトをリニューアルしました' },
-        { id: 2, date: '2026-02-01', tag: '実績', title: '大手食品メーカー様のAI活用プロモーション映像を制作しました' },
-        { id: 3, date: '2026-01-20', tag: 'お知らせ', title: 'AI動画制作サービスを正式リリースしました' },
-        { id: 4, date: '2026-01-10', tag: 'コラム', title: '2026年 AI動画マーケティングの最新トレンド' },
+        { id: 1, date: '2026-03-15', tag: 'お知らせ', title: '採用動画特化サイトをオープンしました' },
+        { id: 2, date: '2026-03-01', tag: '実績', title: '大手建設会社様の採用ドラマ動画を制作しました' },
+        { id: 3, date: '2026-02-20', tag: 'コラム', title: '採用動画で応募数を3倍にするための5つのポイント' },
+        { id: 4, date: '2026-02-10', tag: 'コラム', title: '2026年 採用×動画マーケティングの最新トレンド' },
       ]);
     }
   }
   // ============ CATEGORY MAP (Firestore) ============
   const DEFAULT_CATEGORIES = [
-    { key: 'corporate', label: '企業VP' },
-    { key: 'product', label: '商品紹介' },
-    { key: 'recruit', label: '採用動画' },
-    { key: 'sns', label: 'SNS広告' },
-    { key: 'anime', label: 'アニメーション' },
+    { key: 'brand', label: 'ブランドムービー' },
+    { key: 'drama', label: '採用ドラマ・アニメ' },
+    { key: 'job-desc', label: '職種説明アニメ' },
+    { key: 'sns-short', label: 'SNSショートドラマ' },
   ];
 
   function initCategories() {
@@ -859,7 +858,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const url = URL.createObjectURL(blob);
       const a = document.createElement('a');
       a.href = url;
-      a.download = 'tatedouga-data-' + new Date().toISOString().split('T')[0] + '.json';
+      a.download = 'jobreel-data-' + new Date().toISOString().split('T')[0] + '.json';
       a.click();
       URL.revokeObjectURL(url);
       showToast('データをエクスポートしました', 'success');

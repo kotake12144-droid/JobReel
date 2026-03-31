@@ -1,5 +1,5 @@
 /* ==========================================
-   タテドウガ - Firebase Firestore データ層
+   JobReel（採用特化） - Firebase Firestore データ層
    ========================================== */
 
 const firebaseConfig = {
@@ -15,7 +15,7 @@ if (!firebase.apps.length) {
   firebase.initializeApp(firebaseConfig);
 }
 const _db = firebase.firestore();
-const _META = 'meta';
+const _META = 'jobreel_meta';
 
 // インメモリキャッシュ（同期アクセス用）
 const _cache = {
