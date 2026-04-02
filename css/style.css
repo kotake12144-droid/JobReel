@@ -673,13 +673,19 @@ input, textarea, select { font-family: inherit; font-size: inherit; }
 
 .works-more { text-align: center; margin-top: 56px; }
 .works-more .btn-outline-light {
-  color: var(--gray-100);
-  border-color: var(--gray-300);
+  color: #1A1A1A;
+  background: #FFF;
+  border: 2px solid #1A1A1A;
+  padding: 18px 56px;
+  font-size: 1.1rem;
+  font-weight: 700;
+  border-radius: 60px;
+  letter-spacing: 0.08em;
 }
 .works-more .btn-outline-light:hover {
-  color: var(--red);
-  border-color: var(--red);
-  background: rgba(229, 0, 18, 0.05);
+  background: #1A1A1A;
+  color: #FFF;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.15);
 }
 
 /* ==========================================
