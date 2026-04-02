@@ -65,29 +65,37 @@
 
   <!-- ========== HERO ========== -->
   <section class="hero" id="hero">
-    <div class="hero-video-wrap">
-      <!-- デスクトップ用背景動画 -->
-      <video class="hero-video hero-video-desktop" autoplay muted loop playsinline preload="metadata" poster="images/hero-poster.png">
-        <source src="images/ヒーロー映像２.mp4" type="video/mp4">
-      </video>
-      <!-- モバイル用背景動画 -->
-      <video class="hero-video hero-video-mobile" autoplay muted loop playsinline preload="metadata">
-        <source src="images/ヒーロー モバイル.mp4" type="video/mp4">
-      </video>
-      <div class="hero-overlay"></div>
-      <!-- 動画がない場合のCSS背景フォールバック -->
-      <div class="hero-fallback-bg"></div>
-    </div>
-
-    <div class="hero-content">
-      <h1 class="hero-title">
-        <span class="hero-title-line">AIで<span class="text-red">変わる</span></span>
-        <span class="hero-title-line hero-title-symbol">×</span>
-        <span class="hero-title-line">採用動画の<span class="text-red">常識</span></span>
-      </h1>
-      <div class="hero-actions">
-        <a href="inquiry.html" class="btn btn-primary">無料相談はこちら</a>
+    <div class="hero-bg"></div>
+    <div class="hero-deco"></div>
+    <div class="hero-inner">
+      <div class="hero-left">
+        <p class="hero-tag">AIで創る、採用ムービー・採用アニメ制作</p>
+        <h1 class="hero-title">
+          <span class="hero-title-sub">志望度が上がる</span>
+          <span class="hero-title-main"><span class="hero-title-red">採用動画</span><span class="hero-title-nara">なら</span><span class="hero-title-brand">JobReel</span></span>
+        </h1>
+        <div class="hero-stats">
+          <img src="images/hero-stats-badge.jpg" alt="撮影不要・最短10日・コスト1/3" class="hero-stats-img">
+        </div>
       </div>
+      <div class="hero-right">
+        <div class="hero-media">
+          <video autoplay muted loop playsinline preload="metadata">
+            <source src="images/ヒーロー映像２.mp4" type="video/mp4">
+          </video>
+        </div>
+        <p class="hero-media-tags">ブランドムービー ／ 採用ドラマ ／ 職種説明アニメ ／ SNSショート ／ 他</p>
+      </div>
+    </div>
+    <div class="hero-bar">
+      <a href="inquiry.html" class="hero-bar-btn hero-bar-btn--primary">
+        <span class="hero-bar-sm">お見積り依頼からでもOK</span>
+        <span class="hero-bar-lg"><span class="hero-bar-badge">無料</span> 相談・お見積りはこちら <span class="hero-bar-arr">›</span></span>
+      </a>
+      <a href="flow.html" class="hero-bar-btn hero-bar-btn--dark">
+        <span class="hero-bar-sm">サービス詳細・実績・費用がわかる</span>
+        <span class="hero-bar-lg">制作の流れを見る <span class="hero-bar-arr">›</span></span>
+      </a>
     </div>
   </section>
 
