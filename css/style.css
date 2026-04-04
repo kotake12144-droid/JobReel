@@ -283,15 +283,55 @@ input, textarea, select { font-family: inherit; font-size: inherit; }
   color: #1A1A1A;
   letter-spacing: -0.02em;
 }
-/* 実績バッジ画像 */
+/* 実績バッジ */
 .hero-stats {
-  margin-top: 8px;
+  margin-top: 20px;
 }
 .hero-stats-img {
   width: 100%;
   max-width: 600px;
   height: auto;
   display: block;
+}
+/* 統計リスト（HTML版） */
+.hero-stats-list {
+  display: flex;
+  gap: 0;
+  list-style: none;
+  flex-wrap: wrap;
+}
+.hero-stats-item {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 12px 28px 12px 0;
+  margin-right: 28px;
+  border-right: 1px solid rgba(229, 0, 18, 0.2);
+}
+.hero-stats-item:last-child {
+  border-right: none;
+  margin-right: 0;
+  padding-right: 0;
+}
+.hero-stats-num {
+  font-family: var(--font-en);
+  font-size: 1.7rem;
+  font-weight: 900;
+  color: var(--red);
+  line-height: 1.1;
+  letter-spacing: 0.02em;
+}
+.hero-stats-label {
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: var(--gray-500);
+  letter-spacing: 0.08em;
+  margin-top: 4px;
+}
+@media (max-width: 768px) {
+  .hero-stats-list { gap: 0; }
+  .hero-stats-item { padding: 8px 18px 8px 0; margin-right: 18px; }
+  .hero-stats-num { font-size: 1.3rem; }
 }
 
 /* ========== 右：動画 ========== */
