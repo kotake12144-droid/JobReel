@@ -2951,7 +2951,7 @@ body.work-detail-open { overflow: hidden; }
    ========================================== */
 .pain-points {
   padding: 100px 0;
-  background: #F8F9FA;
+  background: rgba(229, 0, 18, 0.04);
 }
 .pain-lead {
   font-size: 1rem;
