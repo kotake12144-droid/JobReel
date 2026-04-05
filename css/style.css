@@ -3148,6 +3148,36 @@ body.work-detail-open { overflow: hidden; }
   color: #999;
   margin-left: 6px;
 }
+.pain-cost-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+  margin-bottom: 18px;
+}
+.pain-cost-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  background: #F4F6F8;
+  border-radius: 10px;
+  padding: 12px 8px;
+  text-align: center;
+}
+.pain-cost-icon {
+  font-size: 1.3rem;
+  line-height: 1;
+}
+.pain-cost-label {
+  font-size: 0.72rem;
+  color: #999;
+  font-weight: 500;
+}
+.pain-cost-val {
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: #222;
+}
 .pain-hook {
   font-size: 1rem;
   font-weight: 700;
