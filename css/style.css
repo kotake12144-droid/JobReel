@@ -3108,6 +3108,46 @@ body.work-detail-open { overflow: hidden; }
   border-radius: 4px;
   width: 80%;
 }
+.pain-notify {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  background: #F4F6F8;
+  border-radius: 10px;
+  padding: 14px 18px;
+  margin-bottom: 18px;
+}
+.pain-notify-icon {
+  position: relative;
+  flex-shrink: 0;
+}
+.pain-notify-badge {
+  position: absolute;
+  top: -6px;
+  right: -8px;
+  background: var(--red);
+  color: #fff;
+  font-size: 0.7rem;
+  font-weight: 700;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+}
+.pain-notify-label {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #222;
+}
+.pain-notify-label small {
+  font-size: 0.78rem;
+  font-weight: 400;
+  color: #999;
+  margin-left: 6px;
+}
 .pain-hook {
   font-size: 1rem;
   font-weight: 700;
