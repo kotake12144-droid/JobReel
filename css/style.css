@@ -3121,7 +3121,7 @@ body.work-detail-open { overflow: hidden; }
 }
 .pain-body {
   font-size: 0.96rem;
-  color: var(--gray-500);
+  color: #444;
   line-height: 2;
 }
 @media (max-width: 768px) {
