@@ -3009,6 +3009,13 @@ body.work-detail-open { overflow: hidden; }
   color: var(--gray-500);
   line-height: 1.9;
 }
+.pain-body strong {
+  display: block;
+  color: var(--gray-100);
+  font-weight: 700;
+  font-size: 0.95rem;
+  margin-bottom: 4px;
+}
 @media (max-width: 768px) {
   .pain-points { padding: 64px 0; }
   .pain-grid { grid-template-columns: 1fr; gap: 16px; margin-top: 40px; }
