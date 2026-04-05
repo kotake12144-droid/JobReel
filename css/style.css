@@ -256,8 +256,20 @@ input, textarea, select { font-family: inherit; font-size: inherit; }
   font-size: 3rem;
   font-weight: 900;
   color: #1A1A1A;
-  line-height: 1.4;
+  line-height: 1.2;
   letter-spacing: 0.05em;
+}
+.hero-title-sub-num {
+  font-family: var(--font-en);
+  font-size: 6rem;
+  font-weight: 900;
+  color: var(--red);
+  line-height: 1;
+  vertical-align: -0.1em;
+  letter-spacing: -0.02em;
+}
+@media (max-width: 768px) {
+  .hero-title-sub-num { font-size: 3.8rem; }
 }
 .hero-title-main {
   display: block;
