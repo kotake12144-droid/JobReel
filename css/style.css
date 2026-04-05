@@ -2989,23 +2989,12 @@ body.work-detail-open { overflow: hidden; }
   line-height: 1;
   letter-spacing: -0.02em;
 }
-.pain-header {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  margin-bottom: 16px;
-}
-.pain-icon {
-  flex-shrink: 0;
-  width: 28px;
-  height: 28px;
-}
 .pain-title {
   font-size: 1.05rem;
   font-weight: 700;
   color: var(--gray-100);
   line-height: 1.5;
-  margin: 0;
+  margin: 0 0 16px;
 }
 .pain-title span {
   color: var(--red);
