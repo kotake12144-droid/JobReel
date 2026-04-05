@@ -2990,14 +2990,18 @@ body.work-detail-open { overflow: hidden; }
   letter-spacing: -0.02em;
 }
 .pain-title {
-  font-size: 1.05rem;
+  display: block;
+  background: #1A1A1A;
+  color: #FFFFFF;
+  padding: 12px 16px;
+  border-radius: 8px;
+  font-size: 1rem;
   font-weight: 700;
-  color: var(--gray-100);
   line-height: 1.5;
   margin: 0 0 16px;
 }
 .pain-title span {
-  color: var(--red);
+  color: #FF5555;
 }
 .pain-hook {
   font-size: 0.92rem;
