@@ -56,7 +56,7 @@
       <div class="feature-list why-evidence-list">
 
         <!-- 01 視聴完了率 -->
-        <div class="feature-item fade-in">
+        <div class="feature-item">
           <div class="feature-item-text">
             <div class="feature-item-content">
               <div class="why-kpi-title">
@@ -88,7 +88,7 @@
         </div>
 
         <!-- 02 応募数への影響 (reverse) -->
-        <div class="feature-item feature-item--reverse fade-in">
+        <div class="feature-item feature-item--reverse">
           <div class="feature-item-text">
             <div class="feature-item-content">
               <div class="why-kpi-title">
@@ -130,7 +130,7 @@
         </div>
 
         <!-- 03 内定承諾率 -->
-        <div class="feature-item fade-in">
+        <div class="feature-item">
           <div class="feature-item-text">
             <div class="feature-item-content">
               <div class="why-kpi-title">
@@ -167,7 +167,7 @@
       </div>
 
       <!-- CTA -->
-      <div class="works-more fade-in" style="margin-top: 80px;">
+      <div class="works-more" style="margin-top: 80px;">
         <a href="inquiry.html" class="btn btn-primary" style="padding:20px 64px; font-size:1.1rem; border-radius:60px;">無料で相談する</a>
         <a href="index.html" class="btn btn-outline-light" style="margin-left:16px;">ホームに戻る</a>
       </div>
@@ -215,7 +215,20 @@
     </div>
   </footer>
 
-  <script src="js/main.js"></script>
+  <script>
+    // ヘッダースクロール
+    const header = document.getElementById('header');
+    window.addEventListener('scroll', () => {
+      header.classList.toggle('is-scrolled', window.scrollY > 60);
+    }, { passive: true });
+    // ハンバーガーメニュー
+    const hamburger = document.getElementById('hamburger');
+    const nav = document.getElementById('nav');
+    if (hamburger) hamburger.addEventListener('click', () => {
+      hamburger.classList.toggle('is-open');
+      nav.classList.toggle('is-open');
+    });
+  </script>
 
 </body>
 </html>
