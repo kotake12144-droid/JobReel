@@ -2967,16 +2967,17 @@ body.work-detail-open { overflow: hidden; }
 }
 .pain-card {
   background: var(--white);
-  border-radius: 16px;
-  padding: 40px 32px;
+  border-radius: 0 0 16px 16px;
+  padding: 28px 28px 32px;
   position: relative;
-  border-top: 3px solid var(--red);
-  box-shadow: 0 2px 16px rgba(0,0,0,0.06);
+  border: 1px solid rgba(229,0,18,0.15);
+  border-top: none;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.07);
   transition: transform 0.3s var(--ease), box-shadow 0.3s var(--ease);
 }
-.pain-card:hover {
+.pain-card-wrap:hover .pain-card {
   transform: translateY(-4px);
-  box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+  box-shadow: 0 10px 32px rgba(0,0,0,0.1);
 }
 .pain-num {
   font-family: var(--font-en);
@@ -2989,19 +2990,23 @@ body.work-detail-open { overflow: hidden; }
   line-height: 1;
   letter-spacing: -0.02em;
 }
+.pain-card-wrap {
+  display: flex;
+  flex-direction: column;
+}
 .pain-title {
   display: block;
-  background: #1A1A1A;
+  background: var(--red);
   color: #FFFFFF;
-  padding: 12px 16px;
-  border-radius: 8px;
-  font-size: 1rem;
+  padding: 12px 20px;
+  border-radius: 10px 10px 0 0;
+  font-size: 0.95rem;
   font-weight: 700;
   line-height: 1.5;
-  margin: 0 0 16px;
+  margin: 0;
 }
 .pain-title span {
-  color: #FF5555;
+  color: #FFD0D0;
 }
 .pain-hook {
   font-size: 0.92rem;
