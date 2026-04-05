@@ -3217,6 +3217,9 @@ body.work-detail-open { overflow: hidden; }
   font-size: 1rem;
   margin-top: 16px;
 }
+.solution-list {
+  margin-top: 60px;
+}
 .solution-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
