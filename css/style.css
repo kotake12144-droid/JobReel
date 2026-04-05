@@ -2996,6 +2996,63 @@ body.work-detail-open { overflow: hidden; }
   box-shadow: 0 6px 24px rgba(0,0,0,0.07);
   flex: 1;
 }
+.pain-visual {
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.pain-bar-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.pain-bar-label {
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: #888;
+  width: 28px;
+  flex-shrink: 0;
+  text-align: right;
+}
+.pain-bar-track {
+  flex: 1;
+  height: 20px;
+  background: #F0F2F5;
+  border-radius: 4px;
+  overflow: hidden;
+}
+.pain-bar-fill {
+  height: 100%;
+  border-radius: 4px;
+}
+.pain-bar-sent {
+  width: 100%;
+  background: #CBD3DC;
+}
+.pain-bar-reply {
+  width: 4%;
+  background: var(--red);
+}
+.pain-bar-num {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: #555;
+  white-space: nowrap;
+  width: 90px;
+  flex-shrink: 0;
+}
+.pain-bar-num small {
+  font-size: 0.75rem;
+  font-weight: 400;
+  color: #999;
+}
+.pain-bar-num--red {
+  color: var(--red);
+}
+.pain-bar-num--red small {
+  color: #E57070;
+}
 .pain-hook {
   font-size: 1rem;
   font-weight: 700;
