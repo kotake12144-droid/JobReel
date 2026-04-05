@@ -3004,17 +3004,21 @@ body.work-detail-open { overflow: hidden; }
 .pain-title span {
   color: var(--red);
 }
+.pain-hook {
+  font-size: 0.92rem;
+  font-weight: 700;
+  color: var(--red);
+  background: rgba(229, 0, 18, 0.06);
+  border-left: 3px solid var(--red);
+  padding: 8px 12px;
+  margin-bottom: 12px;
+  border-radius: 0 4px 4px 0;
+  line-height: 1.6;
+}
 .pain-body {
-  font-size: 0.9rem;
+  font-size: 0.88rem;
   color: var(--gray-500);
   line-height: 1.9;
-}
-.pain-body strong {
-  display: block;
-  color: var(--gray-100);
-  font-weight: 700;
-  font-size: 0.95rem;
-  margin-bottom: 4px;
 }
 @media (max-width: 768px) {
   .pain-points { padding: 64px 0; }
