@@ -2996,7 +2996,7 @@ body.work-detail-open { overflow: hidden; }
 }
 .pain-title {
   display: block;
-  background: #2C3E50;
+  background: var(--red);
   color: #FFFFFF;
   padding: 12px 20px;
   border-radius: 10px 10px 0 0;
@@ -3006,14 +3006,14 @@ body.work-detail-open { overflow: hidden; }
   margin: 0;
 }
 .pain-title span {
-  color: #F08080;
+  color: #FFD0D0;
 }
 .pain-hook {
   font-size: 0.92rem;
   font-weight: 700;
-  color: #2C3E50;
+  color: #333333;
   background: #F4F6F8;
-  border-left: 3px solid #2C3E50;
+  border-left: 3px solid #CCCCCC;
   padding: 8px 12px;
   margin-bottom: 12px;
   border-radius: 0 4px 4px 0;
