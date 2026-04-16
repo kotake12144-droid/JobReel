@@ -42,8 +42,16 @@ document.addEventListener('DOMContentLoaded', () => {
     return DB.get(key.replace('jr_', ''));
   }
   function setData(key, data) {
-    if (key === KEYS.settings) DB.setSettings(data);
-    else DB.set(key.replace('jr_', ''), data);
+    const p = key === KEYS.settings
+      ? DB.setSettings(data)
+      : DB.set(key.replace('jr_', ''), data);
+    if (p && typeof p.catch === 'function') {
+      p.catch(e => {
+        console.error('[Admin] 書き込みエラー:', e.code, e.message);
+        showToast('保存失敗: ' + (e.code || e.message) + '\nFirestoreのルールを確認してください', 'error');
+      });
+    }
+    return p;
   }
   function getSettings() {
     return DB.getSettings();
@@ -918,7 +926,13 @@ document.addEventListener('DOMContentLoaded', () => {
       loginScreen.style.display = 'none';
       DB.init()
         .then(() => { initSampleData(); initCategories(); renderAll(); })
-        .catch(e => { console.error('[Admin] Firestore初期化失敗:', e); initSampleData(); initCategories(); renderAll(); });
+        .catch(e => {
+          console.error('[Admin] Firestore読み込み失敗:', e.code, e.message);
+          // 読み込み失敗時はサンプルデータで上書きしない（既存データを守る）
+          showToast('Firestore接続エラー: ' + (e.code || e.message) + ' — データが保存されない可能性があります', 'error');
+          initCategories();
+          renderAll();
+        });
     } else {
       // 未ログイン → ログイン画面を表示
       loginScreen.style.display = 'flex';

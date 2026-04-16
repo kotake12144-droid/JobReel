@@ -48,14 +48,12 @@ async function _dbInit() {
   }
 }
 
-// Firestore書き込み（キャッシュは即時更新、DB書き込みは非同期）
+// Firestore書き込み（Promise を返す）
 function _dbWrite(key, data) {
-  _db.collection(_META).doc(key).set({ items: data })
-    .catch(e => console.error('[DB] 書き込みエラー:', key, e));
+  return _db.collection(_META).doc(key).set({ items: data });
 }
 function _dbWriteSettings(data) {
-  _db.collection(_META).doc('settings').set(data)
-    .catch(e => console.error('[DB] 設定書き込みエラー:', e));
+  return _db.collection(_META).doc('settings').set(data);
 }
 
 window.DB = {
@@ -70,13 +68,13 @@ window.DB = {
     return JSON.parse(JSON.stringify(_cache.settings || {}));
   },
 
-  // 書き込み（キャッシュ即時更新 + Firestore非同期）
+  // 書き込み（キャッシュ即時更新 + Firestore書き込み Promise を返す）
   set(key, data) {
     _cache[key] = JSON.parse(JSON.stringify(data));
-    _dbWrite(key, data);
+    return _dbWrite(key, data);
   },
   setSettings(data) {
     _cache.settings = JSON.parse(JSON.stringify(data));
-    _dbWriteSettings(data);
+    return _dbWriteSettings(data);
   }
 };
