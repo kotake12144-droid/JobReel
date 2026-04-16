@@ -815,18 +815,10 @@ document.addEventListener('DOMContentLoaded', () => {
     checkHashOnLoad();
   }
 
-  // 匿名認証してから Firestore を読む（セキュリティルールが認証必須の場合に対応）
-  const _auth = typeof firebase !== 'undefined' && firebase.auth ? firebase.auth() : null;
-  const _signIn = _auth
-    ? _auth.signInAnonymously().catch(() => {})
-    : Promise.resolve();
-
-  _signIn
-    .then(() => DB.init())
+  DB.init()
     .then(() => { _initUI(); })
     .catch(e => {
       console.error('[Main] Firestore初期化失敗:', e);
-      // Firestore が読めなくても UI は動かす（静的カードで表示）
       bindWorkCards();
       bindWorksFilter();
       initScrollAnimation();
