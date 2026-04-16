@@ -28,18 +28,24 @@ const _cache = {
 
 // Firestoreから全データをキャッシュに読み込む
 async function _dbInit() {
-  const snap = await _db.collection(_META).get();
-  snap.forEach(doc => {
-    const key = doc.id;
-    const data = doc.data();
-    if (key === 'settings') {
-      _cache.settings = data || {};
-    } else if (data && Array.isArray(data.items)) {
-      if (Object.prototype.hasOwnProperty.call(_cache, key)) {
-        _cache[key] = data.items;
+  try {
+    const snap = await _db.collection(_META).get();
+    snap.forEach(doc => {
+      const key = doc.id;
+      const data = doc.data();
+      if (key === 'settings') {
+        _cache.settings = data || {};
+      } else if (data && Array.isArray(data.items)) {
+        if (Object.prototype.hasOwnProperty.call(_cache, key)) {
+          _cache[key] = data.items;
+        }
       }
-    }
-  });
+    });
+    console.log('[DB] Firestore読み込み完了:', Object.keys(_cache).map(k => k + ':' + (Array.isArray(_cache[k]) ? _cache[k].length : '(object)')).join(', '));
+  } catch (e) {
+    console.error('[DB] Firestore読み込みエラー:', e.code, e.message);
+    throw e;
+  }
 }
 
 // Firestore書き込み（キャッシュは即時更新、DB書き込みは非同期）
